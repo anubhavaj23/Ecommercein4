@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.login.widget.LoginButton;
+
 public class registerActivity extends AppCompatActivity {
     EditText name,email,mobileno,password;
     Button registerbutton;
@@ -32,7 +34,6 @@ public class registerActivity extends AppCompatActivity {
                     Users user = new Users(name.getText().toString().trim(),email.getText().toString().trim(),mobileno.getText().toString().trim(),password.getText().toString().trim());
                     if(reguser.addUser(user)) {
                         Toast.makeText(registerActivity.this, "User Registered Successfully", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(getApplicationContext(), loginActivity.class));
                         finish();
                     }
                     else {

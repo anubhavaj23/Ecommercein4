@@ -44,7 +44,6 @@ public class settingsActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.setDrawerListener(toggle);
         toggle.syncState();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -59,7 +58,7 @@ public class settingsActivity extends AppCompatActivity
         reguser = new registeruser(this);
         user = reguser.getloggedinuser();
 
-        profileTracker = new ProfileTracker() {
+        /*profileTracker = new ProfileTracker() {
 
             @Override
             protected void onCurrentProfileChanged(
@@ -69,7 +68,7 @@ public class settingsActivity extends AppCompatActivity
                 profile = Profile.getCurrentProfile();
 
             }
-        };
+        };*/
         if(user!=null){
             email.setText(user.getEmail());
             mobileno.setText(user.getMobileno());
@@ -85,7 +84,6 @@ public class settingsActivity extends AppCompatActivity
             email.setPressed(false);
         }
         else{
-
             name.setText(getIntent().getExtras().getString("name"));
             email.setText(getIntent().getExtras().getString("email"));
         }
@@ -205,18 +203,22 @@ public class settingsActivity extends AppCompatActivity
 
             i = new Intent(this,settingsActivity.class);
             startActivity(i);
+            finish();
         } else if (id == R.id.myorder) {
 
-            i = new Intent(this,orderdetailActivity.class);
+            i = new Intent(this,orderlistActivity.class);
             startActivity(i);
+            finish();
         } else if (id == R.id.aboutus) {
 
             i = new Intent(this,aboutusActivity.class);
             startActivity(i);
+            finish();
         } else if (id == R.id.ourpolicy) {
 
             i = new Intent(this,ourpolicyActivity.class);
             startActivity(i);
+            finish();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

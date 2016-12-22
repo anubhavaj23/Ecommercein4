@@ -14,5 +14,128 @@
     tools:showIn="@layout/app_bar_orderdetail">
 
 
+    <LinearLayout
+        android:id="@+id/changeaddressButton"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:clickable="true">
+        <Button
+            android:layout_width="300dp"
+            android:layout_height="match_parent"
+            android:text="Change Address"
+            android:textAppearance="@android:style/TextAppearance.Widget.TextView"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:clickable="false"
+            android:textSize="14sp"
+            android:gravity="center_vertical"
+            android:background="@drawable/square_edittext"
+            android:drawableRight="@drawable/rightarrow"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearlayout"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/changeaddressButton"
+        android:layout_marginTop="5dp"
+        android:layout_centerHorizontal="true">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Amount"
+            android:textAppearance="@android:style/TextAppearance.Widget.TextView"
+            android:paddingLeft="20dp"
+            android:textSize="14sp"
+            android:gravity="center_vertical"
+            android:background="@drawable/square_edittext"/>
+        <TextView
+            android:id="@+id/amount"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text=""
+            android:paddingRight="20dp"
+            android:textAppearance="@android:style/TextAppearance.Widget.TextView"
+            android:textSize="14sp"
+            android:background="@drawable/square_edittext"
+            android:gravity="center_vertical|end" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearlayout2"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/linearlayout"
+        android:layout_marginTop="5dp"
+        android:layout_centerHorizontal="true">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Discount"
+            android:textAppearance="@android:style/TextAppearance.Widget.TextView"
+            android:paddingLeft="20dp"
+            android:textSize="14sp"
+            android:gravity="center_vertical"
+            android:background="@drawable/square_edittext"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="0.00"
+            android:paddingRight="20dp"
+            android:textAppearance="@android:style/TextAppearance.Widget.TextView"
+            android:textSize="14sp"
+            android:background="@drawable/square_edittext"
+            android:gravity="center_vertical|end" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearlayout3"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/linearlayout2"
+        android:layout_marginTop="5dp"
+        android:layout_centerHorizontal="true">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="Total Amount"
+            android:textAppearance="@android:style/TextAppearance.Widget.TextView"
+            android:paddingLeft="20dp"
+            android:textSize="14sp"
+            android:gravity="center_vertical"
+            android:background="@drawable/square_edittext"/>
+        <TextView
+            android:id="@+id/totalamount"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text=""
+            android:paddingRight="20dp"
+            android:textAppearance="@android:style/TextAppearance.Widget.TextView"
+            android:textSize="14sp"
+            android:background="@drawable/square_edittext"
+            android:gravity="center_vertical|end" />
+    </LinearLayout>
+
+    <Button
+        android:text="Proceed"
+        android:layout_width="200dp"
+        android:layout_height="40dp"
+        android:textSize="14sp"
+        android:textAppearance="@android:style/TextAppearance.Widget.TextView"
+        android:textAllCaps="true"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:id="@+id/proceedButton"
+        android:background="@drawable/square_edittext" />
+
 
 </RelativeLayout>

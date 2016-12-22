@@ -124,9 +124,7 @@ public class loginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(checkinput()) {
                     if (reguser.readUser(email.getText().toString().trim(), password.getText().toString().trim())) {
-                        System.out.println("yesyesyesenteredifreaduser");
                         reguser.setloggedinstatus(email.getText().toString().trim());
-                        startActivity(new Intent(getApplicationContext(), orderdetailActivity.class));
                         finish();
                     } else {
                         Toast.makeText(loginActivity.this, "Wrong id/password", Toast.LENGTH_SHORT).show();
@@ -140,7 +138,7 @@ public class loginActivity extends AppCompatActivity {
         registerbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),registerActivity.class));
+                startActivity(new Intent(loginActivity.this,registerActivity.class));
             }
         });
     }
