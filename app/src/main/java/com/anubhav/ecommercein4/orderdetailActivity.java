@@ -23,12 +23,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class orderdetailActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class orderdetailActivity extends AppCompatActivity {
 
-    LinearLayout changeaddressbutton;
-    TextView amount,totalamount;
-    Button proceedbutton;
+    LinearLayout changeaddressbutton,addresslayout;
+    TextView amount,totalamount,address;
+    Button proceedbutton,changeaddresstext;
     UserAddress userAddress;
     registeruser reguser;
     Intent intent;
@@ -38,19 +37,12 @@ public class orderdetailActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        overridePendingTransition(R.transition.enter,R.transition.exit);
         setContentView(R.layout.activity_orderdetail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         activity = this;
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
 
         changeaddressbutton = (LinearLayout) findViewById(R.id.changeaddressButton);
         amount = (TextView) findViewById(R.id.amount);
@@ -64,6 +56,15 @@ public class orderdetailActivity extends AppCompatActivity
         amount.setText(billamount+"");
         totalamount.setText(billamount+"");
         intent = new Intent(this,paymentActivity.class);
+        address = (TextView) findViewById(R.id.address);
+        changeaddresstext = (Button) findViewById(R.id.changeaddresstext);
+        addresslayout = (LinearLayout) findViewById(R.id.linearlayout4);
+        if(userAddress.getAddress(reguser.getloggedinuser().getEmail()) != null)
+            address.setText("Address Details :\n\n" + userAddress.getAddress(reguser.getloggedinuser().getEmail()));
+        else {
+            addresslayout.setVisibility(View.INVISIBLE);
+            changeaddresstext.setText("Add Address");
+        }
 
         proceedbutton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -75,7 +76,7 @@ public class orderdetailActivity extends AppCompatActivity
                     startActivity(intent);
                 }
                 else{
-                    Toast.makeText(orderdetailActivity.this, reguser.getloggedinuser().getEmail()+"\nAddress not available", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(orderdetailActivity.this,"Address not available", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -83,55 +84,38 @@ public class orderdetailActivity extends AppCompatActivity
         changeaddressbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(orderdetailActivity.this,addressActivity.class));
+                startActivityForResult(new Intent(orderdetailActivity.this,addressActivity.class),1);
+            }
+        });
+        Button backbutton = (Button) findViewById(R.id.backButton);
+        backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
             }
         });
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+        super.onBackPressed();
+        overridePendingTransition(R.transition.left_to_right,R.transition.right_to_left);
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.searchcart_menu, menu);
+        getMenuInflater().inflate(R.menu.search_menu, menu);
         return true;
     }
 
-
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-        Intent i;
-        if (id == R.id.settings) {
-
-            i = new Intent(this,settingsActivity.class);
-            startActivity(i);
-        } else if (id == R.id.myorder) {
-
-            i = new Intent(this,orderlistActivity.class);
-            startActivity(i);
-        } else if (id == R.id.aboutus) {
-
-            i = new Intent(this,aboutusActivity.class);
-            startActivity(i);
-        } else if (id == R.id.ourpolicy) {
-
-            i = new Intent(this,ourpolicyActivity.class);
-            startActivity(i);
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if(resultCode == 1){
+            addresslayout.setVisibility(View.VISIBLE);
+            address.setText("Address Details :\n\n" + userAddress.getAddress(reguser.getloggedinuser().getEmail()));
         }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
+        else
+            Toast.makeText(activity, "address not set", Toast.LENGTH_SHORT).show();
     }
 }

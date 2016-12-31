@@ -1,15 +1,11 @@
 package com.anubhav.ecommercein4;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
-
-import com.facebook.login.widget.LoginButton;
 
 public class registerActivity extends AppCompatActivity {
     EditText name,email,mobileno,password;
@@ -46,18 +42,34 @@ public class registerActivity extends AppCompatActivity {
                 }
             }
         });
+        Button backbutton = (Button) findViewById(R.id.backButton);
+        backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
     }
 
     boolean checkinput(){
-        if(name.getText() == null || name.getText().toString().trim().equals(""))
+        if(name.getText().toString().trim().equals("")&&
+                (email.getText().toString().trim().equals(""))&&
+                (mobileno.getText().toString().trim().equals("") || mobileno.getText().toString().trim().length()!=10)&&
+                password.getText().toString().trim().equals("")){
+            Toast.makeText(registerActivity.this, "Enter input", Toast.LENGTH_SHORT).show();
             return false;
-        else if (email.getText() == null || email.getText().toString().trim().equals(""))
+        }
+        if(new Validator().validateemail(email.getText().toString().trim()));
+        else{
+            Toast.makeText(registerActivity.this, "Enter a valid email", Toast.LENGTH_LONG).show();
             return false;
-        else if(mobileno.getText() == null || mobileno.getText().toString().trim().equals(""))
+        }
+        if(new Validator().validatemobileno(mobileno.getText().toString().trim()));
+        else{
+            Toast.makeText(registerActivity.this, "Enter a valid Mobile Number", Toast.LENGTH_LONG).show();
             return false;
-        else if(password.getText() == null || password.getText().toString().trim().equals(""))
-            return false;
+        }
 
         return true;
     }

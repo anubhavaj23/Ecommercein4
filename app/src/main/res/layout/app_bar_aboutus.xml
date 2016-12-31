@@ -16,16 +16,40 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/MyTheme.PopupOverlay" >
-            <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="match_parent"
-                android:text="About Us"
-                android:gravity="center"
-                android:textSize="20sp"/>
+            app:popupTheme="@style/MyTheme.PopupOverlay"
+            android:background="@drawable/square_edittext">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent">
+                    <Button
+                        android:layout_width="40dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:drawableLeft="@drawable/leftarrow"
+                        android:background="@color/colorPrimary"
+                        android:id="@+id/backButton" />
+                    <ImageView
+                        android:padding="2dp"
+                        android:layout_width="50dp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/myutiicon1"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="match_parent">
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="match_parent"
+                        android:text="About Us"
+                        android:gravity="center_vertical"
+                        android:layout_marginStart="60dp"
+                        android:textSize="20sp"/>
+                </LinearLayout>
+            </LinearLayout>
         </android.support.v7.widget.Toolbar>
-
     </android.support.design.widget.AppBarLayout>
 
     <include layout="@layout/content_aboutus" />

@@ -13,26 +13,44 @@
     tools:context="com.anubhav.ecommercein4.orderdetailActivity"
     tools:showIn="@layout/app_bar_orderdetail">
 
-
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:paddingRight="20dp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/linearlayout4">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:text="Address not Set"
+            android:padding="5dp"
+            android:gravity="center_vertical"
+            android:id="@+id/address"/>
+    </LinearLayout>
     <LinearLayout
         android:id="@+id/changeaddressButton"
         android:layout_width="wrap_content"
         android:layout_height="50dp"
-        android:layout_alignParentTop="true"
+        android:layout_below="@id/linearlayout4"
         android:layout_centerHorizontal="true"
-        android:clickable="true">
+        android:clickable="true"
+        android:background="@drawable/cabuttonback">
         <Button
             android:layout_width="300dp"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:text="Change Address"
             android:textAppearance="@android:style/TextAppearance.Widget.TextView"
             android:paddingLeft="20dp"
+            android:textColor="@color/colorwindowbackground"
             android:paddingRight="20dp"
             android:clickable="false"
             android:textSize="14sp"
             android:gravity="center_vertical"
-            android:background="@drawable/square_edittext"
-            android:drawableRight="@drawable/rightarrow"/>
+            android:background="#ebe5e5"
+            android:id="@+id/changeaddresstext"
+            android:drawableRight="@drawable/ic_rightarrow1"/>
     </LinearLayout>
 
     <LinearLayout
@@ -136,6 +154,5 @@
         android:layout_marginBottom="50dp"
         android:id="@+id/proceedButton"
         android:background="@drawable/square_edittext" />
-
 
 </RelativeLayout>

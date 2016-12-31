@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.facebook.CallbackManager;
@@ -31,7 +32,7 @@ import java.util.Arrays;
 
 public class loginActivity extends AppCompatActivity {
     EditText email,password;
-    Button loginbutton,registerbutton;
+    Button loginbutton,registerbutton,fpbutton;
     private CallbackManager callbackManager;
     ProfileTracker profileTracker;
     private LoginButton fbloginButton;
@@ -51,6 +52,7 @@ public class loginActivity extends AppCompatActivity {
         password = (EditText) findViewById(R.id.password);
         loginbutton = (Button) findViewById(R.id.loginbutton);
         registerbutton = (Button) findViewById(R.id.registerbutton);
+        fpbutton = (Button) findViewById(R.id.forgotpasswordButton);
         final registeruser reguser = new registeruser(this);
         reguser.logoutusers();
         LoginManager.getInstance().logOut();
@@ -87,7 +89,7 @@ public class loginActivity extends AppCompatActivity {
                                             Intent intent = new Intent(loginActivity.this, settingsActivity.class);
                                             intent.putExtra("email", email[0]);
                                             intent.putExtra("name",profile.getName());
-                                            startActivity(intent);
+                                            startActivityForResult(intent,1);
                                             finish();
 
                                         } catch (JSONException e) {
@@ -125,6 +127,7 @@ public class loginActivity extends AppCompatActivity {
                 if(checkinput()) {
                     if (reguser.readUser(email.getText().toString().trim(), password.getText().toString().trim())) {
                         reguser.setloggedinstatus(email.getText().toString().trim());
+                        loginActivity.this.setResult(1);
                         finish();
                     } else {
                         Toast.makeText(loginActivity.this, "Wrong id/password", Toast.LENGTH_SHORT).show();
@@ -141,6 +144,20 @@ public class loginActivity extends AppCompatActivity {
                 startActivity(new Intent(loginActivity.this,registerActivity.class));
             }
         });
+        Button backbutton = (Button) findViewById(R.id.backButton);
+        backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+        fpbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(loginActivity.this, "forgot password", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     boolean checkinput(){
@@ -149,6 +166,12 @@ public class loginActivity extends AppCompatActivity {
         else if (password.getText() == null || password.getText().toString().trim().equals(""))
             return false;
         return true;
+    }
+
+    @Override
+    public void onBackPressed() {
+        this.setResult(0);
+        super.onBackPressed();
     }
 
     @Override

@@ -15,4 +15,9 @@
 
     <style name="MyTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="NavDrawerTextStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="listPreferredItemPaddingRight">50dp</item>
+    </style>
 </resources>

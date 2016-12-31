@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
-
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
         <item
             android:id="@+id/settings"
-            android:title="Settings"
+            android:title="                     Settings"
             />
         <item
             android:id="@+id/myorder"
-            android:title="My Order"
+            android:title="                    My Order"
             />
         <item
             android:id="@+id/aboutus"
-            android:title="About Us"
+            android:title="                    About Us"
             />
         <item
             android:id="@+id/ourpolicy"
-            android:title="Our Policy"
+            android:title="                   Our Policy"
             />
-
+        <item
+                android:id="@+id/contactus"
+                android:title="                   Contact Us"
+            />
 </menu>

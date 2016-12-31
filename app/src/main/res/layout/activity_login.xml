@@ -4,26 +4,52 @@
     android:id="@+id/activity_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+
     tools:context="com.anubhav.ecommercein4.loginActivity">
 
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@drawable/square_edittext"
+        android:id="@+id/toolbar">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+            <Button
+                android:layout_width="40dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:drawableLeft="@drawable/leftarrow"
+                android:background="@color/colorPrimary"
+                android:id="@+id/backButton" />
+            <ImageView
+                android:padding="2dp"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:src="@drawable/myutiicon1"/>
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <ImageView
+        android:layout_below="@id/toolbar"
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/myuti"/>
     <EditText
         android:layout_height="40dp"
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/email"
-        android:drawableLeft="@drawable/acccircle2"
+        android:drawableLeft="@drawable/user"
         android:hint="  Username"
         android:textColorHint="#99ffffff"
         android:paddingRight="5dip"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:layout_width="250dp"
-        android:background="@drawable/rounded_edittext"
-        android:elevation="10dp"/>
+        android:background="@drawable/rounded_edittext"/>
 
     <EditText
         android:layout_height="40dp"
@@ -31,12 +57,11 @@
         android:ems="10"
         android:id="@+id/password"
         android:hint=" Password"
-        android:drawableLeft="@drawable/ic_key1"
+        android:drawableLeft="@drawable/key"
         android:textColorHint="#99ffffff"
         android:paddingRight="5dip"
         android:background="@drawable/rounded_edittext"
         android:layout_width="250dp"
-        android:elevation="10dp"
         android:layout_below="@+id/email"
         android:layout_alignStart="@+id/email"
         android:layout_marginTop="10dp" />
@@ -47,12 +72,12 @@
         android:layout_height="40dp"
         android:layout_marginTop="12dp"
         android:id="@+id/registerbutton"
+        android:textAllCaps="false"
         android:background="@drawable/rounded_button"
         android:textStyle="bold"
         android:typeface="normal"
         android:textSize="15sp"
         android:textColor="@color/colorwindowbackground"
-        android:elevation="10dp"
         android:layout_below="@+id/password"
         android:layout_alignStart="@+id/password" />
 
@@ -61,12 +86,12 @@
         android:layout_width="115dp"
         android:layout_height="40dp"
         android:id="@+id/loginbutton"
+        android:textAllCaps="false"
         android:background="@drawable/rounded_button"
         android:textStyle="bold"
         android:typeface="normal"
         android:textSize="15sp"
         android:textColor="@color/colorwindowbackground"
-        android:elevation="10dp"
         android:layout_alignBaseline="@+id/registerbutton"
         android:layout_alignBottom="@+id/registerbutton"
         android:layout_alignEnd="@+id/password" />
@@ -77,8 +102,22 @@
         android:layout_height="40dp"
         android:background="@drawable/rounded_button"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="65dp"
+        android:layout_below="@+id/registerbutton"
+        android:layout_alignStart="@+id/registerbutton" />
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:id="@+id/forgotpasswordButton"
+        android:text="Forgot password ?"
+        android:background="@drawable/rounded_button"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:typeface="normal"
+        android:textSize="15sp"
         android:layout_below="@+id/registerbutton"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="18dp" />
+        android:layout_marginTop="12dp" />
 
 </RelativeLayout>
